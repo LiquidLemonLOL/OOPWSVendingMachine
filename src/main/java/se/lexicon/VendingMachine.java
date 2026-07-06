@@ -2,13 +2,11 @@ package se.lexicon;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 public class VendingMachine {
 
 
     //Class only handles logic, does not prompt for any user input
-    private static final Set<Integer> ACCEPTED_COINS = Set.of(1, 2, 5, 10, 20, 50);
     private final List<Product> products;
     private int balance;
 
@@ -21,10 +19,12 @@ public class VendingMachine {
     public int getBalance() { return balance; }
 
     public String insertCoin(int value) {
-        if (!isValidCoinValue(value)) {
-            return value + " is an invalid coin value, must be 1, 2, 5, 10, 20 or 50 kr";
+        Optional<Coin> coin = Coin.fromValue(value);
+        if (coin.isPresent()) {
+            balance += coin.get().getValue();
+        } else {
+            return "Invalid coin, must be 1, 2, 5, 10, 20 or 50.";
         }
-        balance += value;
         return value + " kr has been inserted into Vending Machine.";
     }
 
@@ -66,10 +66,6 @@ public class VendingMachine {
             balance = 0;
         }
         return "Dispensing: " + product.describe();
-    }
-
-    public static boolean isValidCoinValue(int value) {
-        return ACCEPTED_COINS.contains(value);
     }
 
     //helper method

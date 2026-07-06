@@ -62,8 +62,7 @@ public class VendingMachine {
         product.decreaseQuantity();
 
         if (balance > 0) {
-            IO.println("Change returned : " + getBalance() + " kr");
-            balance = 0;
+            IO.println(requestBalance());
         }
         return "Dispensing: " + product.describe();
     }

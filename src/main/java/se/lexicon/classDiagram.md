@@ -37,9 +37,9 @@ classDiagram
         -List~Product~ products
         -int balance
         +insertCoin(int value) void
-        +requestChange() void
+        +requestBalance() void
         +selectProduct(int id) void
-        +listProducts() List~Product~
+        +getProducts() List~Product~
         +getBalance() void
     }
     class VendingMachineUI {

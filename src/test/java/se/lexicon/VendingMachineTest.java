@@ -40,7 +40,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(20);
         assertAll(
                 //should return description of product + empty balance, double check through both print statement and values might be redundant?
-                () -> assertEquals("Dispensing: " + product.describe() + "\nBalance: " + 0 + " kr", vendingMachine.selectProduct(1)),
+                () -> assertEquals("Dispensing: Chips (Snack, 130g)", vendingMachine.selectProduct(1)),
                 () -> assertEquals(0, vendingMachine.getBalance()),
                 () -> assertEquals(2, vendingMachine.getProducts().getFirst().getQuantity())
         );
@@ -79,7 +79,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(50);
         assertAll(
                 () -> assertEquals(50, vendingMachine.getBalance()),
-                () -> assertEquals("Balance returned, 50 kr received from Vending Machine, current balance is now 0 kr",
+                () -> assertEquals("Balance returned, 50 kr received from Vending Machine.",
                         vendingMachine.requestBalance()),
                 () -> assertEquals(0, vendingMachine.getBalance())
         );

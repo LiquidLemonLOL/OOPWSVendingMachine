@@ -25,7 +25,7 @@ public class VendingMachine {
             return value + " is an invalid coin value, must be 1, 2, 5, 10, 20 or 50 kr";
         }
         balance += value;
-        return value + " kr has been inserted into Vending Machine, current balance is " + getBalance() + " kr";
+        return value + " kr has been inserted into Vending Machine.";
     }
 
     public String requestBalance() {
@@ -34,7 +34,7 @@ public class VendingMachine {
         }
         int returned = balance;
         balance = 0;
-        return "Balance returned, " + returned + " kr received from Vending Machine, current balance is now " + getBalance() + " kr";
+        return "Balance returned, " + returned + " kr received from Vending Machine.";
     }
 
     public String selectProduct(int id) {
@@ -65,7 +65,7 @@ public class VendingMachine {
             IO.println("Change returned : " + getBalance() + " kr");
             balance = 0;
         }
-        return "Dispensing: " + product.describe() + "\nBalance: " + getBalance() + " kr";
+        return "Dispensing: " + product.describe();
     }
 
     public static boolean isValidCoinValue(int value) {

@@ -4,7 +4,7 @@
 ```mermaid
 classDiagram
     Direction RL
-    VendingMachineUI <-- VendingMachine : uses
+    VendingMachineUI --> VendingMachine : uses
     Product "1..*" --* "1" VendingMachine : stocks
     Product <|-- Snack
     Product <|-- Beverage

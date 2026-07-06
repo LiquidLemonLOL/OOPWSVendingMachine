@@ -4,21 +4,20 @@
 ```mermaid
 classDiagram
     Direction RL
-    VendingMachineUI --> VendingMachine : uses
+    VendingMachineUI "1" --> "1" VendingMachine : uses
     Product "1..*" --* "1" VendingMachine : stocks
     Product <|-- Snack
     Product <|-- Beverage
     Product <|-- Fruit
+    Coin "0..*" --> "1" VendingMachine : uses
     class Product {
         <<abstract>>
         -int id
         -String name
         -int price
         -int quantity
-        +getId() int
-        +getName() String
-        +getPrice() int
-        +getQuantity() int
+        +inStock() boolean
+        +decreaseQuantity() void
         +describe() String
     }
     class Beverage {
@@ -36,15 +35,27 @@ classDiagram
     class VendingMachine {
         -List~Product~ products
         -int balance
-        +insertCoin(int value) void
-        +requestBalance() void
-        +selectProduct(int id) void
+        +insertCoin(int value) String
+        +requestBalance() String
+        +selectProduct(int id) String
         +getProducts() List~Product~
-        +getBalance() void
+        +getBalance() int
+        +addProduct() void
     }
     class VendingMachineUI {
         -VendingMachine vendingMachine
         +start() void
+    }
+    class Coin {
+        <<enumeration>>
+        ONE(1)
+        TWO(2)
+        FIVE(5)
+        TEN(10)
+        TWENTY(20)
+        FIFTY(50)
+        +fromValue() Optional<Coin>
+        +getValue() int
     }
 
 

@@ -11,7 +11,7 @@ public class Beverage extends Product {
 
     public int getVolumeMl() {return volumeMl;}
 
-    void setVolumeMl (int volumeMl) {
+    private void setVolumeMl (int volumeMl) {
         if ( volumeMl < 1) {
             throw new IllegalArgumentException("Volume Ml must be a positive integer");
         }

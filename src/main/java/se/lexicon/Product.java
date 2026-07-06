@@ -19,23 +19,23 @@ public abstract class Product {
     public int getPrice() { return price; }
     public int getQuantity() { return quantity; }
 
-    public void setId(int id) { this.id = id; }
+    private void setId(int id) { this.id = id; }
 
-    public void setName(String name) {
+    private void setName(String name) {
         if (name == null || name.isEmpty()) {
             throw new IllegalArgumentException("Name cannot be null or empty");
         }
         this.name = name;
     }
 
-    public void setPrice(int price) {
+    private void setPrice(int price) {
         if (price < 1) {
             throw new IllegalArgumentException("Price must be a positive integer");
         }
         this.price = price;
     }
 
-    public void setQuantity(int quantity) {
+    private void setQuantity(int quantity) {
         if (quantity < 0) {
             throw new IllegalArgumentException("Quantity cannot be a negative number");
         }

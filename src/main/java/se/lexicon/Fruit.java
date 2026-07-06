@@ -11,7 +11,7 @@ public class Fruit extends Product {
 
     public String getOrigin() { return origin; }
 
-    void setOrigin(String origin) {
+    private void setOrigin(String origin) {
         if (origin == null || origin.isEmpty()) {
             throw new IllegalArgumentException("Origin must not be null or empty");
         }

@@ -11,7 +11,7 @@ public class Snack extends Product {
 
     public int getWeightGrams() { return weightGrams; }
 
-    void setWeightGrams (int weightGrams) {
+    private void setWeightGrams (int weightGrams) {
         if (weightGrams < 1) {
             throw new IllegalArgumentException("Volume Ml must be a positive integer");
         }

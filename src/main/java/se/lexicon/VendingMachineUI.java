@@ -61,7 +61,7 @@ public class VendingMachineUI {
 
     }
 
-    public void printBalance() {
+    private void printBalance() {
         IO.println("Current balance is: " + vendingMachine.getBalance() +" kr");
     }
 

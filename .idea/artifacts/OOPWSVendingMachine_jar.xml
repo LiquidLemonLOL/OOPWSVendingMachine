@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OOPWSVendingMachine:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OOPWSVendingMachine_jar</output-path>
+    <root id="archive" name="OOPWSVendingMachine.jar">
+      <element id="module-output" name="OOPWSVendingMachine" />
+    </root>
+  </artifact>
+</component>

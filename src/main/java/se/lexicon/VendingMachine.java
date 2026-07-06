@@ -2,11 +2,13 @@ package se.lexicon;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public class VendingMachine {
 
 
     //Class only handles logic, does not prompt for any user input
+    private static final Set<Integer> ACCEPTED_COINS = Set.of(1, 2, 5, 10, 20, 50);
     private final List<Product> products;
     private int balance;
 
@@ -19,7 +21,7 @@ public class VendingMachine {
     public int getBalance() { return balance; }
 
     public String insertCoin(int value) {
-        if (!CoinValidator.isValidValue(value)) {
+        if (!isValidCoinValue(value)) {
             return value + " is an invalid coin value, must be 1, 2, 5, 10, 20 or 50 kr";
         }
         balance += value;
@@ -53,18 +55,26 @@ public class VendingMachine {
 
         if (balance < product.getPrice()) {
             return "Insufficient funds, " + product.getName() + " costs " + product.getPrice() + " kr."
-                    + " Missing amount : " + (product.getPrice() - balance) + " kr";
+                    + " Missing amount: " + (product.getPrice() - balance) + " kr";
         }
 
         balance -= product.getPrice();
         product.decreaseQuantity();
 
-        IO.println("Dispensing: " + product.getName() + " " + product.describe() );
         if (balance > 0) {
             IO.println("Change returned : " + getBalance() + " kr");
             balance = 0;
         }
-        return "Balance: " + getBalance() + " kr";
+        return "Dispensing: " + product.describe() + "\nBalance: " + getBalance() + " kr";
+    }
+
+    public static boolean isValidCoinValue(int value) {
+        return ACCEPTED_COINS.contains(value);
+    }
+
+    //helper method
+    public void addProduct(Product product) {
+        products.add(product);
     }
 
 

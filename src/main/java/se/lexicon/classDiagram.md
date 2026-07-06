@@ -9,7 +9,7 @@ classDiagram
     Product <|-- Snack
     Product <|-- Beverage
     Product <|-- Fruit
-    Coin "0..*" --> "1" VendingMachine : uses
+    Coin "0..*" <-- "1" VendingMachine : uses
     class Product {
         <<abstract>>
         -int id
